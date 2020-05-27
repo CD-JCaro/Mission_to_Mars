@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mars</title>
+  <link rel="stylesheet" href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+</head>
+
+<body>
+    <div class='container-fluid'>
+        <div class='jumbotron text-center'>
+        <h1>Mission to Mars</h1>
+        <p><a class='btn btn-primary btn-lg' href='/scrape' role='button'>Scrape new data</a></p>
+        </div>
+
+        <div class = 'row'>
+            <div class = 'col-md-12'>
+                <h3>Latest Mars News</h3>
+                <h5>{{ info.news.title }}</h5>
+                <p>{{ info.news.summary}}</p>
+            </div>
+        </div>
+        <div class = 'row'>
+            <div class = 'col-md-7'>
+                <h3>Featured Mars Image</h3>
+                <img src = {{info.image.url}} alt = "Featured Image" style = 'width: 100%; height: 100%;'>
+            </div>
+            <div class = 'col-md-4'>
+                <div class = 'card' style = 'border: 1px grey solid;'>
+                    <div class= 'card-body'>
+                    <h4>Current weather on Mars</h4>
+                    <p>{{ info.weather }}</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Mars Facts</h4>
+                    {{ info.facts|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 class = 'justify-content-center' style = 'text-align: center; padding-top: 40px;;'>Mars Hemispheres</h3>
+    <hr>
+    <div class = 'card-deck'>
+        <div class = 'row'>
+            {% for hemi in info.hemispheres %}
+            <div class = 'col-md-6'>
+                <div class = 'card'>
+                    <img class = 'card-img-top' src = {{hemi.img_url}} style = 'width: 100%; height: 100%;'>
+                    <div class= 'card-body'>
+                        <p class = 'card-text'>{{ hemi.title }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
